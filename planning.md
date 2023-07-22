@@ -1,6 +1,7 @@
-# Game Choice: War
+# Game Choice: Space Invaders
 
 ## Wireframes
+<img src = "assets/space-invaders-wireframe.png">
 
 ## Psudocode
 ### Define constants
