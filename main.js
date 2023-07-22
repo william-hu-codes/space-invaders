@@ -12,13 +12,10 @@ const gridEl = document.querySelector(".grid")
 
 /*----- event listeners -----*/
 
+
 /*----- functions -----*/
 function init() {
-    startingGrid.forEach(function(cell, index) {
-        let cellEl = document.createElement("div")
-        cellEl.setAttribute("id", index)
-        gridEl.appendChild(cellEl)
-    })
+    createGameboard()
     currentAliens = [...startingAliens]
     currentShooter = 205
 }
@@ -32,15 +29,25 @@ function createAliens() {
     cellElsArr[currentAliens[i]].classList.add("alien")
 }
 createAliens()
-
 // HERE TO PREVIOUS NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
 
+createShooter()
+//not sure if this function is needed or if it can just be one line in init function
 function createShooter() {
     cellElsArr[currentShooter].classList.add("shooter")
 }
 
-function render() {
+function createGameboard() {
+    startingGrid.forEach(function(cell, index) {
+        let cellEl = document.createElement("div")
+        cellEl.setAttribute("id", index)
+        gridEl.appendChild(cellEl)
+    })
 }
 
+function moveShooter(evt) {
 
-/*----- cached elements continued  -----*/
+}
+
+function render() {
+}
