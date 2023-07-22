@@ -17,7 +17,7 @@ const gridEl = document.querySelector(".grid")
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
-    currentShooter = 205
+    currentShooter = 202
 }
 // HERE TO OTHER NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
 init()
