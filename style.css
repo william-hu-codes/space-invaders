@@ -1,18 +1,22 @@
 /* global styles  */
 * {
     box-sizing: border-box;
-    /* border: 0.5px solid red; */
+    border: 0.5px solid red;
 }
 /* element styles */
-.grid {
-    width: 555px;
-    height: 555px;
-    border: 1px solid white;
-    display: grid;
-    grid-template-columns: repeat(15, 37px);
-    grid-template-rows: repeat(15, 37px);
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
+.alien {
+    background-color: green;
+    border-radius: 50%;
+}
+.shooter {
+    background-color: red;
+}
 /* layout */
 body {
     margin: 0;
@@ -22,14 +26,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center; 
 }
-.info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.grid {
+    width: 555px;
+    height: 555px;
+    border: 1px solid white;
+    display: grid;
+    grid-template-columns: repeat(15, 37px);
+    grid-template-rows: repeat(15, 37px);
 }
 /* headings */
 h1 {

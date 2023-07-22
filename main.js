@@ -1,11 +1,14 @@
 /*----- constants -----*/
 const startingGrid = [...new Array(225)]
-
+const startingAliens = [0,1,2,3,4,5,6,7,8,9,
+15,16,17,18,19,20,21,22,23,24,
+30,31,32,33,34,35,36,37,38,39]
 /*----- state variables -----*/
-
+let direction;
+let currentShooter;
+let currentAliens;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
-
 
 /*----- event listeners -----*/
 
@@ -16,6 +19,28 @@ function init() {
         cellEl.setAttribute("id", index)
         gridEl.appendChild(cellEl)
     })
+    currentAliens = [...startingAliens]
+    currentShooter = 205
+}
+// HERE TO OTHER NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
+init()
+
+const cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
+
+function createAliens() {
+    for (let i = 0; i < currentAliens.length; i++)
+    cellElsArr[currentAliens[i]].classList.add("alien")
+}
+createAliens()
+
+// HERE TO PREVIOUS NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
+
+function createShooter() {
+    cellElsArr[currentShooter].classList.add("shooter")
 }
 
-init()
+function render() {
+}
+
+
+/*----- cached elements continued  -----*/
