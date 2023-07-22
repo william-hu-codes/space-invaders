@@ -5,19 +5,32 @@ const startingAliens = [0,1,2,3,4,5,6,7,8,9,
 30,31,32,33,34,35,36,37,38,39]
 /*----- state variables -----*/
 let direction;
-let currentShooter;
+let currentShooterPos;
 let currentAliens;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 
 /*----- event listeners -----*/
+document.addEventListener("keydown", moveShooter)
 
-
+function moveShooter(evt) {
+    cellElsArr[currentShooterPos].classList.remove("shooter")
+    switch(evt.key) {
+        case "ArrowLeft": 
+            if (currentShooterPos % 15 !== 0) {currentShooterPos -= 1}
+            break
+        case "ArrowRight":
+            //not sure how to check if it is on the very right side of grid
+            currentShooterPos += 1
+            break
+    }
+    renderShooter()
+}
 /*----- functions -----*/
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
-    currentShooter = 202
+    currentShooterPos = 202
 }
 // HERE TO OTHER NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
 init()
@@ -31,10 +44,10 @@ function createAliens() {
 createAliens()
 // HERE TO PREVIOUS NOTE MUST COME IN THIS ORDER FOR CONTROL FLOW TO WORK
 
-createShooter()
-//not sure if this function is needed or if it can just be one line in init function
-function createShooter() {
-    cellElsArr[currentShooter].classList.add("shooter")
+renderShooter()
+
+function renderShooter() {
+    cellElsArr[currentShooterPos].classList.add("shooter")
 }
 
 function createGameboard() {
@@ -43,10 +56,6 @@ function createGameboard() {
         cellEl.setAttribute("id", index)
         gridEl.appendChild(cellEl)
     })
-}
-
-function moveShooter(evt) {
-
 }
 
 function render() {
