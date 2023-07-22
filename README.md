@@ -15,3 +15,7 @@ I hope this game successfully demonstrates all my newly acquired JS, CSS, and HT
 ## Getting Started
 
 ## Icebox Features
+- Additional lives
+- Score counter with hi-score
+- Different levels with different arrangements and amounts of alien invaders
+- Barriers that block missiles for added difficulty
