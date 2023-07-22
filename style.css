@@ -22,19 +22,42 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
-    color: rgb(47, 210, 47);
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
-
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 /* headings */
-
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green;
+    font-size: 50px;
+}
+h3 {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green;
+}
+p {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green;
+}
 /* buttons */
 .btn-container {
     display: flex;
-    justify-content: flex-start;
-
+    justify-content: space-evenly;
+}
+.difficulty {
+    padding: 8px;
+    margin: 10px;
+    /* border-radius: 10px; */
+    background-color:aliceblue;
 }
 /* images */
