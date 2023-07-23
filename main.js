@@ -9,6 +9,7 @@ let direction;
 let currentShooterPos;
 let currentAliens;
 let interval = 500
+let missileIndex
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -33,7 +34,7 @@ function init() {
     createGameboard()
     currentAliens = [...startingAliens]
     currentShooterPos = 202
-    direction = 1
+    direction = -1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
     renderAliens()
 }
@@ -51,14 +52,19 @@ renderShooter()
 function moveAliens() {
     const isEdge = currentAliens[0] % width === 0 || currentAliens[currentAliens.length - 1] % width === width -1 
     removeAliens()
+    if (isEdge) {
+        for (let i = 0; i < currentAliens.length; i++) {
+            currentAliens[i] += width
+            direction = (direction)*(-1)
+        }
+    }
     for (let i = 0; i < currentAliens.length; i++) {
         currentAliens[i] += direction
     }
     console.log("aliens moved!")
     renderAliens()
+// TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
 }
-
-
 
 function removeAliens() {
     for (let i = 0; i < currentAliens.length; i++)
@@ -77,7 +83,16 @@ function createGameboard() {
     })
 }
 
-function render() {
+function shooter() {
+    missileIndex = currentShooterPos
+    function moveMissile() {
+        cellElsArr[missileIndex].classList.remove("missile")
+        missileIndex -= width
+        renderMissile()
+    }
+}
+function renderMissile() {
+    cellElsArr[missileIndex].classList.add("missile")
 }
 
 // setInterval(moveAliens, 500)

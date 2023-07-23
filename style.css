@@ -17,6 +17,9 @@
 .shooter {
     background-color: red;
 }
+.missile {
+    background-color: white;
+}
 /* layout */
 body {
     margin: 0;
