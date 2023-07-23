@@ -33,7 +33,6 @@ document.addEventListener("keydown", launchMissile)
 function launchMissile(evt) {
     missileIndex = currentShooterPos
     moveMissile()
-    renderMissile()
     switch(evt.key) {
         case " ":
             reRender = setInterval(moveMissile, 900)
@@ -93,7 +92,7 @@ function createGameboard() {
     })
 }
 
-
+//not sure if this function is needed or if it can just be added into movemissile function
 function renderMissile() {
     cellElsArr[missileIndex].classList.add("missile")
 }
@@ -103,4 +102,4 @@ function moveMissile() {
     missileIndex -= width
     renderMissile()
 }
-// setInterval(moveAliens, 500)
+// setInterval(moveAliens, 100)
