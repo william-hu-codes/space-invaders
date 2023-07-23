@@ -29,6 +29,16 @@ function moveShooter(evt) {
     }
     renderShooter()
 }
+document.addEventListener("keydown", launchMissile)
+function launchMissile(evt) {
+    missileIndex = currentShooterPos
+    moveMissile()
+    renderMissile()
+    switch(evt.key) {
+        case " ":
+            reRender = setInterval(moveMissile, 900)
+    }
+}
 /*----- functions -----*/
 function init() {
     createGameboard()
@@ -83,16 +93,14 @@ function createGameboard() {
     })
 }
 
-function shooter() {
-    missileIndex = currentShooterPos
-    function moveMissile() {
-        cellElsArr[missileIndex].classList.remove("missile")
-        missileIndex -= width
-        renderMissile()
-    }
-}
+
 function renderMissile() {
     cellElsArr[missileIndex].classList.add("missile")
 }
 
+function moveMissile() {
+    cellElsArr[missileIndex].classList.remove("missile")
+    missileIndex -= width
+    renderMissile()
+}
 // setInterval(moveAliens, 500)
