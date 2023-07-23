@@ -73,6 +73,7 @@ function moveAliens() {
     console.log("aliens moved!")
     renderAliens()
 // TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
+//TODO if cell of alien is in the last row of grid, render game over and clear interval
 }
 
 function removeAliens() {
