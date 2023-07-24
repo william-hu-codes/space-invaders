@@ -9,7 +9,7 @@ let direction;
 let currentShooterPos;
 let currentAliens;
 let interval = 500
-let currentMissilePos
+let currentMissilePos;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -34,9 +34,9 @@ function launchMissile(evt) {
     console.log(evt.key)
     switch(evt.key) {
         case " ":
-            reRender = setInterval(moveMissile, 100)
             currentMissilePos = currentShooterPos
-            moveMissile()
+            // moveMissile()
+            reRender = setInterval(moveMissile, 100)
             break
     }
 }
