@@ -5,16 +5,15 @@ const startingAliens = [0,1,2,3,4,5,6,7,8,9,
 30,31,32,33,34,35,36,37,38,39]
 const width = 15
 const convertProp = {
-    easy: 1500,
-    medium: 1000,
-    hard: 500
+    easy: 5000,
+    medium: 800,
+    hard: 200
 }
 /*----- state variables -----*/
 let direction;
 let currentShooterPos;
 let currentAliens;
 let interval;
-let currentMissilePos;
 let missileInterval;
 let alienInterval;
 /*----- cached elements  -----*/
@@ -63,8 +62,8 @@ function moveShooter(evt) {
 document.addEventListener("keydown", launchMissile)
 
 function launchMissile(evt) {
-    let currentMissilePos = currentShooterPos
     console.log(evt.key)
+    let currentMissilePos = currentShooterPos
     function moveMissile() {
         cellElsArr[currentMissilePos].classList.remove("missile")
         if (currentMissilePos > width) {
@@ -82,11 +81,11 @@ function launchMissile(evt) {
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
-    currentShooterPos = 202
+    // currentShooterPos = 202
     direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
     renderAliens()
-    renderShooter()
+    // renderShooter()
     alienInterval = setInterval(moveAliens, interval)
 }
 
@@ -119,6 +118,10 @@ function moveAliens() {
         }
     }
     renderAliens()
+    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || cellElsArr[currentAliens[currentAliens.length -1]] >= 210){
+        console.log("game over")
+        clearInterval(alienInterval)
+    }
     console.log("aliens moved!")
 // TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
 //TODO if cell of alien is in the last row of grid, render game over and clear interval

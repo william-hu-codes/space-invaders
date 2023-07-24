@@ -1,7 +1,7 @@
 /* global styles  */
 * {
     box-sizing: border-box;
-    border: 0.5px solid red;
+    /* border: 0.5px solid red; */
 }
 /* element styles */
 .info {
@@ -19,6 +19,7 @@
 }
 .missile {
     background-color: white;
+    border-radius: 30%;
 }
 /* layout */
 body {
