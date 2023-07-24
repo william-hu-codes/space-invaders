@@ -16,6 +16,7 @@ let currentAliens;
 let interval;
 let missileInterval;
 let alienInterval;
+let aliensKilled;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -79,11 +80,18 @@ function launchMissile(evt) {
             missileInterval = setInterval(moveMissile, 100)
             break
     }
+    if (cellElsArr[currentMissilePos].classList.contains("alien")) {
+        cellElsArr[currentMissilePos].classList.remove("missile")
+        cellElsArr[currentMissilePos].classList.remove("alien")
+        clearInterval(missileInterval)
+        killAlien(currentAliens[currentMissilePos])
+    }
 }
 /*----- functions -----*/
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
+    aliensKilled = []
     currentShooterPos = 202
     direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -118,15 +126,10 @@ function moveAliens() {
         }
     }
     renderAliens()
-    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || currentAliens[currentAliens.length - 1] >= 210){
-        console.log("game over")
-        infoEl.textContent = "GAME OVER!"
-        clearInterval(alienInterval)
-    }
-    // console.log("aliens moved!")
-// TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
-//TODO if cell of alien is in the last row of grid, render game over and clear interval
+    checkLoser()
 }
+    // console.log("aliens moved!")
+
 
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++)
@@ -154,4 +157,14 @@ function clearGameboard() {
     while (gridEl.lastElementChild) {
         gridEl.removeChild(gridEl.lastElementChild)
     }
+}
+function checkLoser() {
+    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || currentAliens[currentAliens.length - 1] >= 210){
+        console.log("game over")
+        infoEl.textContent = "GAME OVER!"
+        clearInterval(alienInterval)
+    }    
+}   
+function killAlien(index) {
+    aliensKilled.push(index.splice())
 }
