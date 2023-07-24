@@ -25,7 +25,15 @@ buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
 })
 
+restartEl.addEventListener("click", reset)
 
+function reset() {
+    // clearInterval(missileInterval)
+    clearInterval(alienInterval)
+    clearGameboard()
+    buttonEls.forEach(function(buttonEl) {
+        buttonEl.addEventListener("click", handleClick)
+    })
 }
 function handleClick(evt) {
     interval = convertProp[evt.target.innerText.toLowerCase()]
