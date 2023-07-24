@@ -126,9 +126,9 @@ function moveAliens() {
             currentAliens[i] += direction
         }
     }
-    renderAliens()
-    checkLoser()
     checkWinner()
+    checkLoser()
+    renderAliens()
 }
     // console.log("aliens moved!")
 
@@ -172,10 +172,12 @@ function checkLoser() {
     }    
 }   
 function checkWinner() {
-    if (currentAliens === [])
+    if (currentAliens.length === 0) {
     console.log("Winner!")
     infoEl.textContent = "Great work! You prevented an alien invasaion!"
     clearInterval(alienInterval)
     document.removeEventListener("keydown", moveShooter)
     document.removeEventListener("keydown", launchMissile)
+    gridEl.style.backgroundColor = "blue"
+    }
 }
