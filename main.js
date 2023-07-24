@@ -6,8 +6,8 @@ const startingAliens = [0,1,2,3,4,5,6,7,8,9,
 const width = 15
 const convertProp = {
     easy: 5000,
-    medium: 800,
-    hard: 200
+    medium: 400,
+    hard: 100
 }
 /*----- state variables -----*/
 let direction;
@@ -91,9 +91,6 @@ function init() {
     renderShooter()
     alienInterval = setInterval(moveAliens, interval)
 }
-
-// init()
-
 function moveAliens() {
     //remove current aliens from screen
     removeAliens()
@@ -121,7 +118,7 @@ function moveAliens() {
         }
     }
     renderAliens()
-    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || cellElsArr[currentAliens[currentAliens.length -1]] >= 210){
+    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || currentAliens[currentAliens.length - 1] >= 210){
         console.log("game over")
         infoEl.textContent = "GAME OVER!"
         clearInterval(alienInterval)
