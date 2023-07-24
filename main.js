@@ -167,6 +167,8 @@ function checkLoser() {
         console.log("game over")
         infoEl.textContent = "GAME OVER!"
         clearInterval(alienInterval)
+        document.removeEventListener("keydown", moveShooter)
+        document.removeEventListener("keydown", launchMissile)
     }    
 }   
 function checkWinner() {
@@ -174,4 +176,6 @@ function checkWinner() {
     console.log("Winner!")
     infoEl.textContent = "Great work! You prevented an alien invasaion!"
     clearInterval(alienInterval)
+    document.removeEventListener("keydown", moveShooter)
+    document.removeEventListener("keydown", launchMissile)
 }
