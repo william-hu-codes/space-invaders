@@ -9,7 +9,7 @@ let direction;
 let currentShooterPos;
 let currentAliens;
 let interval = 500
-let missileIndex
+let currentMissilePos
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -31,11 +31,13 @@ function moveShooter(evt) {
 }
 document.addEventListener("keydown", launchMissile)
 function launchMissile(evt) {
-    missileIndex = currentShooterPos
-    moveMissile()
+    console.log(evt.key)
     switch(evt.key) {
         case " ":
-            reRender = setInterval(moveMissile, 900)
+            reRender = setInterval(moveMissile, 100)
+            currentMissilePos = currentShooterPos
+            moveMissile()
+            break
     }
 }
 /*----- functions -----*/
@@ -95,12 +97,12 @@ function createGameboard() {
 
 //not sure if this function is needed or if it can just be added into movemissile function
 function renderMissile() {
-    cellElsArr[missileIndex].classList.add("missile")
+    cellElsArr[currentMissilePos].classList.add("missile")
 }
 
 function moveMissile() {
-    cellElsArr[missileIndex].classList.remove("missile")
-    missileIndex -= width
+    cellElsArr[currentMissilePos].classList.remove("missile")
+    currentMissilePos -= width
     renderMissile()
 }
 // setInterval(moveAliens, 100)
