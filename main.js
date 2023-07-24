@@ -4,20 +4,43 @@ const startingAliens = [0,1,2,3,4,5,6,7,8,9,
 15,16,17,18,19,20,21,22,23,24,
 30,31,32,33,34,35,36,37,38,39]
 const width = 15
+const convertProp = {
+    easy: 1500,
+    medium: 1000,
+    hard: 500
+}
 /*----- state variables -----*/
 let direction;
 let currentShooterPos;
 let currentAliens;
-let interval = 500
+let interval;
 let currentMissilePos;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
-
+const buttonEls = document.querySelectorAll("button.difficulty")
+const restartEl = document.querySelector(".restart")
 /*----- event listeners -----*/
+buttonEls.forEach(function(buttonEl) {
+    buttonEl.addEventListener("click", handleClick)
+})
+
+
+}
+function handleClick(evt) {
+    interval = convertProp[evt.target.innerText.toLowerCase()]
+    init()
+    buttonEls.forEach(function(buttonEl) {
+        buttonEl.removeEventListener("click", handleClick)
+    })
+}
+
+
+
 document.addEventListener("keydown", moveShooter)
 
 function moveShooter(evt) {
+    if (evt.key !== "ArrowLeft" && evt.key !== "ArrowRight") return;
     cellElsArr[currentShooterPos].classList.remove("shooter")
     switch(evt.key) {
         case "ArrowLeft": 
@@ -30,13 +53,13 @@ function moveShooter(evt) {
     renderShooter()
 }
 document.addEventListener("keydown", launchMissile)
+
 function launchMissile(evt) {
     console.log(evt.key)
     switch(evt.key) {
         case " ":
             currentMissilePos = currentShooterPos
-            // moveMissile()
-            reRender = setInterval(moveMissile, 100)
+            missileInterval = setInterval(moveMissile, 100)
             break
     }
 }
@@ -45,37 +68,50 @@ function init() {
     createGameboard()
     currentAliens = [...startingAliens]
     currentShooterPos = 202
-    direction = -1
+    direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
     renderAliens()
+    renderShooter()
+    alienInterval = setInterval(moveAliens, interval)
 }
 
-init()
+// init()
 
+function moveAliens() {
+    //remove current aliens from screen
+    removeAliens()
+    //x position (column) of first and last alien
+    const firstAlien = currentAliens[0]
+    const lastAlien = currentAliens[currentAliens.length - 1]
+
+    const firstAlienX = firstAlien % width
+    const lastAlienX = lastAlien % width
+    //checking if we will hit an edge
+    const isEdge = firstAlienX + direction < 0 ||lastAlienX + direction > width - 1
+    console.log(firstAlienX, lastAlienX, isEdge)
+
+    if (isEdge) {
+        direction = direction * (-1)
+    }
+
+    for(let i = 0; i < currentAliens.length; i++) {
+        if (isEdge) {
+            //if at an edge, then move aliens down one row (width)
+            currentAliens[i] += width
+        } else {
+            //otherwise, move the aliens left/right (direction)
+            currentAliens[i] += direction
+        }
+    }
+    renderAliens()
+    console.log("aliens moved!")
+// TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
+//TODO if cell of alien is in the last row of grid, render game over and clear interval
+}
 
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++)
     cellElsArr[currentAliens[i]].classList.add("alien")
-}
-
-renderShooter()
-
-function moveAliens() {
-    const isEdge = currentAliens[0] % width === 0 || currentAliens[currentAliens.length - 1] % width === width -1 
-    removeAliens()
-    if (isEdge) {
-        for (let i = 0; i < currentAliens.length; i++) {
-            currentAliens[i] += width
-            direction = (direction)*(-1)
-        }
-    }
-    for (let i = 0; i < currentAliens.length; i++) {
-        currentAliens[i] += direction
-    }
-    console.log("aliens moved!")
-    renderAliens()
-// TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
-//TODO if cell of alien is in the last row of grid, render game over and clear interval
 }
 
 function removeAliens() {
@@ -105,4 +141,9 @@ function moveMissile() {
     currentMissilePos -= width
     renderMissile()
 }
-// setInterval(moveAliens, 100)
+
+function clearGameboard() {
+    while (gridEl.lastElementChild) {
+        gridEl.removeChild(gridEl.lastElementChild)
+    }
+}

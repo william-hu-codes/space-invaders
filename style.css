@@ -58,10 +58,14 @@ p {
     display: flex;
     justify-content: space-evenly;
 }
-.difficulty {
+button {
     padding: 8px;
     margin: 10px;
     /* border-radius: 10px; */
     background-color:aliceblue;
+}
+.restart {
+    background-color: red;
+    color: white;
 }
 /* images */
