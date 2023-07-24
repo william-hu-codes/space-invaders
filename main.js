@@ -128,6 +128,7 @@ function moveAliens() {
     }
     renderAliens()
     checkLoser()
+    checkWinner()
 }
     // console.log("aliens moved!")
 
@@ -168,3 +169,9 @@ function checkLoser() {
         clearInterval(alienInterval)
     }    
 }   
+function checkWinner() {
+    if (currentAliens === [])
+    console.log("Winner!")
+    infoEl.textContent = "Great work! You prevented an alien invasaion!"
+    clearInterval(alienInterval)
+}
