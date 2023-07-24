@@ -14,7 +14,7 @@ let direction;
 let currentShooterPos;
 let currentAliens;
 let interval;
-let missileInterval;
+// let missileInterval;
 let alienInterval;
 let aliensKilled;
 /*----- cached elements  -----*/
@@ -31,7 +31,7 @@ buttonEls.forEach(function(buttonEl) {
 restartEl.addEventListener("click", reset)
 
 function reset() {
-    clearInterval(missileInterval)
+    // clearInterval(missileInterval)
     clearInterval(alienInterval)
     clearGameboard()
     buttonEls.forEach(function(buttonEl) {
@@ -66,25 +66,26 @@ function moveShooter(evt) {
 document.addEventListener("keydown", launchMissile)
 
 function launchMissile(evt) {
+    let missileInterval
     console.log(evt.key)
     let currentMissilePos = currentShooterPos
     function moveMissile() {
         cellElsArr[currentMissilePos].classList.remove("missile")
-        if (currentMissilePos > width) {
-            currentMissilePos -= width
-            cellElsArr[currentMissilePos].classList.add("missile")
-        } else return;
+        if (currentMissilePos < width) return
+        currentMissilePos -= width
+        cellElsArr[currentMissilePos].classList.add("missile")
+        if (cellElsArr[currentMissilePos].classList.contains("alien")) {
+            clearInterval(missileInterval)
+            cellElsArr[currentMissilePos].classList.remove("missile")
+            cellElsArr[currentMissilePos].classList.remove("alien")
+            let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
+            currentAliens.splice(shotAlienIndex, 1)
+        }
     }
     switch(evt.key) {
         case " ":
             missileInterval = setInterval(moveMissile, 100)
             break
-    }
-    if (cellElsArr[currentMissilePos].classList.contains("alien")) {
-        cellElsArr[currentMissilePos].classList.remove("missile")
-        cellElsArr[currentMissilePos].classList.remove("alien")
-        clearInterval(missileInterval)
-        killAlien(currentAliens[currentMissilePos])
     }
 }
 /*----- functions -----*/
@@ -133,7 +134,9 @@ function moveAliens() {
 
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++)
-    cellElsArr[currentAliens[i]].classList.add("alien")
+    if (!aliensKilled.includes(i)) {
+        cellElsArr[currentAliens[i]].classList.add("alien")
+    }
 }
 
 function removeAliens() {
@@ -165,6 +168,3 @@ function checkLoser() {
         clearInterval(alienInterval)
     }    
 }   
-function killAlien(index) {
-    aliensKilled.push(index.splice())
-}
