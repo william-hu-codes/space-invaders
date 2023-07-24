@@ -21,6 +21,7 @@ const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
 const buttonEls = document.querySelectorAll("button.difficulty")
 const restartEl = document.querySelector(".restart")
+const infoEl = document.querySelector(".infoMessage")
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
@@ -35,8 +36,10 @@ function reset() {
     buttonEls.forEach(function(buttonEl) {
         buttonEl.addEventListener("click", handleClick)
     })
+    infoEl.textContent = "Select difficulty level to start:"
 }
 function handleClick(evt) {
+    infoEl.textContent = "Good luck!"
     interval = convertProp[evt.target.innerText.toLowerCase()]
     init()
     buttonEls.forEach(function(buttonEl) {
@@ -81,11 +84,11 @@ function launchMissile(evt) {
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
-    // currentShooterPos = 202
+    currentShooterPos = 202
     direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
     renderAliens()
-    // renderShooter()
+    renderShooter()
     alienInterval = setInterval(moveAliens, interval)
 }
 
@@ -102,7 +105,7 @@ function moveAliens() {
     const lastAlienX = lastAlien % width
     //checking if we will hit an edge
     const isEdge = firstAlienX + direction < 0 ||lastAlienX + direction > width - 1
-    console.log(firstAlienX, lastAlienX, isEdge)
+    // console.log(firstAlienX, lastAlienX, isEdge)
 
     if (isEdge) {
         direction = direction * (-1)
@@ -120,9 +123,10 @@ function moveAliens() {
     renderAliens()
     if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || cellElsArr[currentAliens[currentAliens.length -1]] >= 210){
         console.log("game over")
+        infoEl.textContent = "GAME OVER!"
         clearInterval(alienInterval)
     }
-    console.log("aliens moved!")
+    // console.log("aliens moved!")
 // TODO if cell of shooter contains class of both alien and shooter, then render game over, clear interval
 //TODO if cell of alien is in the last row of grid, render game over and clear interval
 }
