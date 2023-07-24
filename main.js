@@ -15,6 +15,8 @@ let currentShooterPos;
 let currentAliens;
 let interval;
 let currentMissilePos;
+let missileInterval;
+let alienInterval;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -28,7 +30,7 @@ buttonEls.forEach(function(buttonEl) {
 restartEl.addEventListener("click", reset)
 
 function reset() {
-    // clearInterval(missileInterval)
+    clearInterval(missileInterval)
     clearInterval(alienInterval)
     clearGameboard()
     buttonEls.forEach(function(buttonEl) {
@@ -42,8 +44,6 @@ function handleClick(evt) {
         buttonEl.removeEventListener("click", handleClick)
     })
 }
-
-
 
 document.addEventListener("keydown", moveShooter)
 
@@ -63,10 +63,17 @@ function moveShooter(evt) {
 document.addEventListener("keydown", launchMissile)
 
 function launchMissile(evt) {
+    let currentMissilePos = currentShooterPos
     console.log(evt.key)
+    function moveMissile() {
+        cellElsArr[currentMissilePos].classList.remove("missile")
+        if (currentMissilePos > width) {
+            currentMissilePos -= width
+            cellElsArr[currentMissilePos].classList.add("missile")
+        } else return;
+    }
     switch(evt.key) {
         case " ":
-            currentMissilePos = currentShooterPos
             missileInterval = setInterval(moveMissile, 100)
             break
     }
@@ -137,17 +144,6 @@ function createGameboard() {
         cellEl.setAttribute("id", index)
         gridEl.appendChild(cellEl)
     })
-}
-
-//not sure if this function is needed or if it can just be added into movemissile function
-function renderMissile() {
-    cellElsArr[currentMissilePos].classList.add("missile")
-}
-
-function moveMissile() {
-    cellElsArr[currentMissilePos].classList.remove("missile")
-    currentMissilePos -= width
-    renderMissile()
 }
 
 function clearGameboard() {
