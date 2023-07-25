@@ -1,8 +1,8 @@
 /*----- constants -----*/
 const startingGrid = [...new Array(225)]
-const startingAliens = [0,1,2,3,4,35,36,37,38,39,
-15,16,17,18,19,20,21,22,23,24,
-30,31,32,33,34,5,6,7,8,9]
+const startingAliens = [0,1,2,3,4,5,36,37,38,39,
+20,21,22,23,24,30,31,32,33,34,
+15,16,17,18,19,35,6,7,8,9]
 //swapped 39 and 9 in above array because the the alien in index 9 must be the last element in array for isEdge check to work properly
 const width = 15
 const convertProp = {

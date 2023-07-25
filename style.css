@@ -74,8 +74,12 @@ p {
 button {
     padding: 8px;
     margin: 10px;
-    /* border-radius: 10px; */
+    border-radius: 15px;
     background-color:aliceblue;
+}
+button:hover {
+    background-color: lightpink;
+    color: white;
 }
 .btn-container {
     display: flex;
