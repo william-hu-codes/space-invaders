@@ -23,6 +23,7 @@ let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
 const buttonEls = document.querySelectorAll("button.difficulty")
 const restartEl = document.querySelector(".restart")
 const infoEl = document.querySelector(".infoMessage")
+const textEls = document.querySelectorAll(".text")
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
@@ -115,6 +116,9 @@ function checkLoser() {
         clearInterval(alienInterval)
         document.removeEventListener("keydown", moveShooter)
         document.removeEventListener("keydown", launchMissile)
+        textEls.forEach(function(textEl) {
+            textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
+        })
     }    
 }   
 function checkWinner() {
@@ -125,6 +129,9 @@ function checkWinner() {
     document.removeEventListener("keydown", moveShooter)
     document.removeEventListener("keydown", launchMissile)
     gridEl.style.backgroundColor = "blue"
+    textEls.forEach(function(textEl) {
+        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green"
+    })
     }
 }
 
@@ -142,6 +149,9 @@ function reset() {
     })
     gridEl.style.backgroundColor = "black"
     infoEl.textContent = "Select difficulty level to start:"
+    textEls.forEach(function(textEl) {
+        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple"
+    })
 }
 
 function handleClick(evt) {
