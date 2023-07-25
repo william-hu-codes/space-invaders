@@ -5,15 +5,22 @@ const startingAliens = [0,1,2,3,4,5,6,7,8,9,
 30,31,32,33,34,35,36,37,38,39]
 const width = 15
 const convertProp = {
-    easy: 5000,
-    medium: 400,
+    easy: 300,
+    medium: 200,
     hard: 100
+}
+const points = {
+    easy: 200,
+    medium: 400,
+    hard: 500
 }
 /*----- state variables -----*/
 let direction;
 let currentShooterPos;
 let currentAliens;
 let interval;
+let hiScore=0
+let currentScore;
 // let missileInterval;
 let alienInterval;
 let aliensKilled;
@@ -40,6 +47,7 @@ function init() {
     createGameboard()
     currentAliens = [...startingAliens]
     aliensKilled = []
+    currentScore = 0
     currentShooterPos = 202
     direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -81,8 +89,7 @@ function moveAliens() {
 
 
 function renderAliens() {
-    for (let i = 0; i < currentAliens.length; i++)
-    if (!aliensKilled.includes(i)) {
+    for (let i = 0; i < currentAliens.length; i++) {
         cellElsArr[currentAliens[i]].classList.add("alien")
     }
 }
