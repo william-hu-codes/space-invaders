@@ -28,9 +28,10 @@ Welcome to Space Invaders, the classic arcade game that puts you in charge of de
     - The aliens are organized into rows, and each row has its unique pattern of movement. 
 4.	Scoring:
     - Each alien you shoot down earns you points. 
+    - The harder the difficulty selected, the more points each alien is worth.
     - Your goal is to achieve the highest score possible by eliminating as many aliens as you can, as quickly as you can, before they reach Earth.
 5.	Game Over and High Score:
-    - The game ends when the aliens successfully reach the bottom of the screen or
+    - The game ends when the aliens successfully reach the bottom of the screen or your spaceship comes into contact with an alien.
     - If your score is high enough, you may have you score immortalized in the Hi-score!
 6.	Remember: It may seem overwhelming at first, but with practice, you'll improve your skills and become a true Space Invaders champion!
 Now, suit up, grab those arrow keys, and show those pesky invaders who's boss in Space Invaders – the timeless arcade classic! Good luck, space defender

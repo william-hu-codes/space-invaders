@@ -1,8 +1,9 @@
 /*----- constants -----*/
 const startingGrid = [...new Array(225)]
-const startingAliens = [0,1,2,3,4,5,6,7,8,9,
+const startingAliens = [0,1,2,3,4,5,6,7,8,39,
 15,16,17,18,19,20,21,22,23,24,
-30,31,32,33,34,35,36,37,38,39]
+30,31,32,33,34,35,36,37,38,9]
+//swapped 39 and 9 in above array because the the alien in index 9 must be the last element in array for isEdge check to work properly
 const width = 15
 const convertProp = {
     easy: 300,
@@ -19,8 +20,8 @@ let direction;
 let currentShooterPos;
 let currentAliens;
 let interval;
-let hiScore=0
 let currentScore;
+let hiScore=0
 // let missileInterval;
 let alienInterval;
 /*----- cached elements  -----*/
@@ -30,6 +31,8 @@ const buttonEls = document.querySelectorAll("button.difficulty")
 const restartEl = document.querySelector(".restart")
 const infoEl = document.querySelector(".infoMessage")
 const textEls = document.querySelectorAll(".text")
+const currentScoreEl = document.querySelector(".current-score")
+const hiScoreEl = document.querySelector(".hi-score")
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
@@ -49,6 +52,7 @@ function init() {
     currentShooterPos = 202
     direction = 1
     cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
+    renderScores()
     renderAliens()
     renderShooter()
     alienInterval = setInterval(moveAliens, interval)
@@ -80,8 +84,6 @@ function moveAliens() {
     checkWinner()
     checkLoser()
 }
-    // console.log("aliens moved!")
-
 
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++) {
@@ -145,9 +147,9 @@ function renderLoser() {
     })
 }
 
+
 // EVENT LISTENER CALLBACK FUNCTIONS
 function reset() {
-    // clearInterval(missileInterval)
     clearInterval(alienInterval)
     clearGameboard()
     gridEl.style.backgroundColor = "black"
@@ -166,6 +168,7 @@ function reset() {
 function handleClick(evt) {
     infoEl.textContent = "Good luck!"
     interval = convertProp[evt.target.innerText.toLowerCase()]
+    difficulty=evt.target.innerText.toLowerCase()
     init()
     buttonEls.forEach(function(buttonEl) {
         buttonEl.setAttribute("disabled", "true")
@@ -201,6 +204,8 @@ function launchMissile(evt) {
             cellElsArr[currentMissilePos].classList.remove("alien")
             let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
             currentAliens.splice(shotAlienIndex, 1)
+            currentScore += points[difficulty]
+            renderScores()
         }
     }
     switch(evt.key) {
@@ -208,4 +213,19 @@ function launchMissile(evt) {
             missileInterval = setInterval(moveMissile, 100)
             break
     }
+}
+function renderScores() {
+    renderCurrentScore()
+    renderHiScore()
+}
+function renderCurrentScore() {
+    currentScoreEl.textContent = `Current score: ${currentScore}`
+}
+
+
+function renderHiScore() {
+    if (currentScore > hiScore) {
+        hiScore = currentScore
+    }
+    hiScoreEl.textContent = `Hi-score: ${hiScore}`
 }
