@@ -1,8 +1,8 @@
 /*----- constants -----*/
 const startingGrid = [...new Array(225)]
-const startingAliens = [0,1,2,3,4,5,6,7,8,39,
+const startingAliens = [0,1,2,3,4,35,36,37,38,39,
 15,16,17,18,19,20,21,22,23,24,
-30,31,32,33,34,35,36,37,38,9]
+30,31,32,33,34,5,6,7,8,9]
 //swapped 39 and 9 in above array because the the alien in index 9 must be the last element in array for isEdge check to work properly
 const width = 15
 const convertProp = {
@@ -61,13 +61,13 @@ function moveAliens() {
     //remove current aliens from screen
     removeAliens()
     //x position (column) of first and last alien
-    const firstAlien = currentAliens[0]
-    const lastAlien = currentAliens[currentAliens.length - 1]
-    const firstAlienX = firstAlien % width
-    const lastAlienX = lastAlien % width
+    const leftAlien = currentAliens[0]
+    const rightAlien = currentAliens[currentAliens.length - 1]
+    const leftAlienX = leftAlien % width
+    const rightAlienX = rightAlien % width
     //checking if we will hit an edge
-    const isEdge = firstAlienX + direction < 0 ||lastAlienX + direction > width - 1
-    // console.log(firstAlienX, lastAlienX, isEdge)
+    const isEdge = leftAlienX + direction < 0 ||rightAlienX + direction > width - 1
+    // console.log(leftAlienX, rightAlienX, isEdge)
     if (isEdge) {
         direction = direction * (-1)
     }

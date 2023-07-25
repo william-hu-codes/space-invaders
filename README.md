@@ -7,6 +7,7 @@ This is my humble remake of the legendary arcade game, Space Invaders, that was 
 I hope this game successfully demonstrates all my newly acquired JS, CSS, and HTML skills!
 
 ## Gameplay - Screenshots
+Images TDB
 
 ## Technologies Used
 - JS

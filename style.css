@@ -1,7 +1,7 @@
 /* global styles  */
 * {
     box-sizing: border-box;
-    border: 0.5px solid red;
+    /* border: 0.5px solid red; */
 }
 /* element styles */
 .info {
@@ -16,9 +16,11 @@
 }
 .shooter {
     background-color: red;
+    /* background-image: url("assets/transparentRocket1.gif"); */
 }
 .missile {
     background-color: white;
+    /* background-image: url("assets/missileGifTransparent.gif"); */
     border-radius: 30%;
 }
 /* layout */
