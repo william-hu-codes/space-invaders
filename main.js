@@ -30,67 +30,10 @@ buttonEls.forEach(function(buttonEl) {
 
 restartEl.addEventListener("click", reset)
 
-function reset() {
-    // clearInterval(missileInterval)
-    clearInterval(alienInterval)
-    clearGameboard()
-    gridEl.style.backgroundColor = "black"
-    document.addEventListener("keydown", moveShooter)
-    document.addEventListener("keydown", launchMissile)
-    buttonEls.forEach(function(buttonEl) {
-        buttonEl.addEventListener("click", handleClick)
-    })
-    infoEl.textContent = "Select difficulty level to start:"
-}
-function handleClick(evt) {
-    infoEl.textContent = "Good luck!"
-    interval = convertProp[evt.target.innerText.toLowerCase()]
-    init()
-    buttonEls.forEach(function(buttonEl) {
-        buttonEl.removeEventListener("click", handleClick)
-    })
-}
-
 document.addEventListener("keydown", moveShooter)
 
-function moveShooter(evt) {
-    if (evt.key !== "ArrowLeft" && evt.key !== "ArrowRight") return;
-    cellElsArr[currentShooterPos].classList.remove("shooter")
-    switch(evt.key) {
-        case "ArrowLeft": 
-            if (currentShooterPos % width !== 0) {currentShooterPos -= 1}
-            break
-        case "ArrowRight":
-            if (currentShooterPos % width < width - 1) {currentShooterPos += 1}
-            break
-    }
-    renderShooter()
-}
 document.addEventListener("keydown", launchMissile)
 
-function launchMissile(evt) {
-    let missileInterval
-    console.log(evt.key)
-    let currentMissilePos = currentShooterPos
-    function moveMissile() {
-        cellElsArr[currentMissilePos].classList.remove("missile")
-        if (currentMissilePos < width) return
-        currentMissilePos -= width
-        cellElsArr[currentMissilePos].classList.add("missile")
-        if (cellElsArr[currentMissilePos].classList.contains("alien")) {
-            clearInterval(missileInterval)
-            cellElsArr[currentMissilePos].classList.remove("missile")
-            cellElsArr[currentMissilePos].classList.remove("alien")
-            let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
-            currentAliens.splice(shotAlienIndex, 1)
-        }
-    }
-    switch(evt.key) {
-        case " ":
-            missileInterval = setInterval(moveMissile, 100)
-            break
-    }
-}
 /*----- functions -----*/
 function init() {
     createGameboard()
@@ -182,5 +125,68 @@ function checkWinner() {
     document.removeEventListener("keydown", moveShooter)
     document.removeEventListener("keydown", launchMissile)
     gridEl.style.backgroundColor = "blue"
+    }
+}
+
+// EVENT LISTENER CALLBACK FUNCTIONS
+
+function reset() {
+    // clearInterval(missileInterval)
+    clearInterval(alienInterval)
+    clearGameboard()
+    gridEl.style.backgroundColor = "black"
+    document.addEventListener("keydown", moveShooter)
+    document.addEventListener("keydown", launchMissile)
+    buttonEls.forEach(function(buttonEl) {
+        buttonEl.removeAttribute("disabled")
+    })
+    gridEl.style.backgroundColor = "black"
+    infoEl.textContent = "Select difficulty level to start:"
+}
+
+function handleClick(evt) {
+    infoEl.textContent = "Good luck!"
+    interval = convertProp[evt.target.innerText.toLowerCase()]
+    init()
+    buttonEls.forEach(function(buttonEl) {
+        buttonEl.setAttribute("disabled", "true")
+    })
+}
+
+function moveShooter(evt) {
+    if (evt.key !== "ArrowLeft" && evt.key !== "ArrowRight") return;
+    cellElsArr[currentShooterPos].classList.remove("shooter")
+    switch(evt.key) {
+        case "ArrowLeft": 
+            if (currentShooterPos % width !== 0) {currentShooterPos -= 1}
+            break
+        case "ArrowRight":
+            if (currentShooterPos % width < width - 1) {currentShooterPos += 1}
+            break
+    }
+    renderShooter()
+}
+
+function launchMissile(evt) {
+    let missileInterval
+    console.log(evt.key)
+    let currentMissilePos = currentShooterPos
+    function moveMissile() {
+        cellElsArr[currentMissilePos].classList.remove("missile")
+        if (currentMissilePos < width) return
+        currentMissilePos -= width
+        cellElsArr[currentMissilePos].classList.add("missile")
+        if (cellElsArr[currentMissilePos].classList.contains("alien")) {
+            clearInterval(missileInterval)
+            cellElsArr[currentMissilePos].classList.remove("missile")
+            cellElsArr[currentMissilePos].classList.remove("alien")
+            let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
+            currentAliens.splice(shotAlienIndex, 1)
+        }
+    }
+    switch(evt.key) {
+        case " ":
+            missileInterval = setInterval(moveMissile, 100)
+            break
     }
 }
