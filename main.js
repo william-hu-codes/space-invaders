@@ -34,6 +34,9 @@ function reset() {
     // clearInterval(missileInterval)
     clearInterval(alienInterval)
     clearGameboard()
+    gridEl.style.backgroundColor = "black"
+    document.addEventListener("keydown", moveShooter)
+    document.addEventListener("keydown", launchMissile)
     buttonEls.forEach(function(buttonEl) {
         buttonEl.addEventListener("click", handleClick)
     })
