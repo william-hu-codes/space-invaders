@@ -23,7 +23,6 @@ let hiScore=0
 let currentScore;
 // let missileInterval;
 let alienInterval;
-let aliensKilled;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -46,7 +45,6 @@ document.addEventListener("keydown", launchMissile)
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
-    aliensKilled = []
     currentScore = 0
     currentShooterPos = 202
     direction = 1
@@ -81,9 +79,9 @@ function moveAliens() {
             currentAliens[i] += direction
         }
     }
+    renderAliens()
     checkWinner()
     checkLoser()
-    renderAliens()
 }
     // console.log("aliens moved!")
 
@@ -117,10 +115,10 @@ function clearGameboard() {
     }
 }
 function checkLoser() {
-    if (cellElsArr[currentShooterPos].classList.contains("alien", "shooter") || currentAliens[currentAliens.length - 1] >= 210){
+    if ((cellElsArr[currentShooterPos].classList.contains("alien")) || (currentAliens[currentAliens.length - 1] >= 210)){
+        clearInterval(alienInterval)
         console.log("game over")
         infoEl.textContent = "GAME OVER!"
-        clearInterval(alienInterval)
         document.removeEventListener("keydown", moveShooter)
         document.removeEventListener("keydown", launchMissile)
         textEls.forEach(function(textEl) {
