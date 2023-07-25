@@ -1,7 +1,7 @@
 /* global styles  */
 * {
     box-sizing: border-box;
-    /* border: 0.5px solid red; */
+    border: 0.5px solid red;
 }
 /* element styles */
 .info {
@@ -40,19 +40,33 @@ body {
     grid-template-columns: repeat(15, 37px);
     grid-template-rows: repeat(15, 37px);
 }
+.scores-container {
+    width: 555px;
+    display: flex;
+    justify-content: space-between;
+}
+/* .current-score {
+    align-self: flex-start;
+}
+.hi-score {
+    align-self: flex-end;
+} */
 /* headings */
 h1 {
     font-family: 'Orbitron', sans-serif;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
     font-size: 50px;
+    margin-bottom: 8px;
 }
 h2 {
     font-family: 'Orbitron', sans-serif;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
+    margin: 6px;
 }
 p {
     font-family: 'Orbitron', sans-serif;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
+    margin: 6px;
 }
 /* buttons */
 button {
