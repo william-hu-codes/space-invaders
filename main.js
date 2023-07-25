@@ -59,17 +59,14 @@ function moveAliens() {
     //x position (column) of first and last alien
     const firstAlien = currentAliens[0]
     const lastAlien = currentAliens[currentAliens.length - 1]
-
     const firstAlienX = firstAlien % width
     const lastAlienX = lastAlien % width
     //checking if we will hit an edge
     const isEdge = firstAlienX + direction < 0 ||lastAlienX + direction > width - 1
     // console.log(firstAlienX, lastAlienX, isEdge)
-
     if (isEdge) {
         direction = direction * (-1)
     }
-
     for(let i = 0; i < currentAliens.length; i++) {
         if (isEdge) {
             //if at an edge, then move aliens down one row (width)
@@ -133,8 +130,22 @@ function checkWinner() {
     }
 }
 
-// EVENT LISTENER CALLBACK FUNCTIONS
+function renderWinner() {
+    infoEl.textContent = "Great work! You prevented an alien invasaion!"
+    gridEl.style.backgroundColor = "blue"
+    textEls.forEach(function(textEl) {
+        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green"
+    })
+}
 
+function renderLoser() {
+    infoEl.textContent = "GAME OVER!"
+    textEls.forEach(function(textEl) {
+        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
+    })
+}
+
+// EVENT LISTENER CALLBACK FUNCTIONS
 function reset() {
     // clearInterval(missileInterval)
     clearInterval(alienInterval)
@@ -197,19 +208,4 @@ function launchMissile(evt) {
             missileInterval = setInterval(moveMissile, 100)
             break
     }
-}
-
-function renderWinner() {
-    infoEl.textContent = "Great work! You prevented an alien invasaion!"
-    gridEl.style.backgroundColor = "blue"
-    textEls.forEach(function(textEl) {
-        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green"
-    })
-}
-
-function renderLoser() {
-    infoEl.textContent = "GAME OVER!"
-    textEls.forEach(function(textEl) {
-        textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
-    })
 }
