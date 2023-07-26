@@ -7,7 +7,9 @@ This is my humble remake of the legendary arcade game, Space Invaders, that was 
 I hope this game successfully demonstrates all my newly acquired JS, CSS, and HTML skills!
 
 ## Gameplay - Screenshots
-Images TDB
+<img src="assets/gameplay1.png">
+<img src="assets/gameplay2.png">
+<img src="assets/gameplay3.png">
 
 ## Technologies Used
 - JS
@@ -17,6 +19,7 @@ Images TDB
 ## Key Resources
 - Pixiliart - for css images
 - onlinegiftools - to remove the background of gifs
+- W3schools
 
 ## Getting Started
 Welcome to Space Invaders, the classic arcade game that puts you in charge of defending Earth from an alien invasion! Follow these simple instructions to become a master space defender:
