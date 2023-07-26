@@ -11,7 +11,7 @@ const convertProp = {
     hard: 100
 }
 const points = {
-    easy: 200,
+    easy: 300,
     medium: 400,
     hard: 500
 }
@@ -144,6 +144,7 @@ function checkWinner() {
         clearInterval(alienInterval)
         document.removeEventListener("keydown", moveShooter)
         document.removeEventListener("keydown", launchMissile)
+        currentScore += 2500
         renderWinner()
     }
 }

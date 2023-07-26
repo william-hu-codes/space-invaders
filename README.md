@@ -30,7 +30,8 @@ Welcome to Space Invaders, the classic arcade game that puts you in charge of de
 4.	Scoring:
     - Each alien you shoot down earns you points. 
     - The harder the difficulty selected, the more points each alien is worth.
-    - Your goal is to achieve the highest score possible by eliminating as many aliens as you can, as quickly as you can, before they reach Earth.
+    - Your goal is to achieve the highest score possible by eliminating as many aliens as you can before they reach Earth.
+    - You get bonus points for defeating all the aliens before they land on earth.
 5.	Game Over and High Score:
     - The game ends when the aliens successfully reach the bottom of the screen or your spaceship comes into contact with an alien.
     - If your score is high enough, you may have you score immortalized in the Hi-score!
