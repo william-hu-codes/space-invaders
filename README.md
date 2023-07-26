@@ -1,6 +1,8 @@
 # Space Invaders
 Get ready to step into a time warp of nostalgic gaming glory! It's an epic throwback to the arcade heyday, where pixelated aliens are invading once more, just like they did back in the '80s. Dust off your vintage joystick, fire up your CRT screen, and embark on a journey through the galaxies of your childhood dreams. Those classic, relentless invaders are back, and they're pixelated proof that some things never go out of style. Navigate through their iconic formations, like dancing to the beat of an old-school synthesizer, and zap them into retro oblivion. It's like Pac-Man's ghostly cousins decided to invade the cosmos, and it's up to you to become the ultimate time-traveling space hero. Can you relive the golden age of gaming, beat the high score, and show these invaders that nostalgia packs a punch? Grab your leg warmers, dust off that Rubik's Cube, and get ready for a blast from the past in Space Invaders: Blast from the Past – where the '80s gaming vibes are strong, and the memories are even stronger!
 
+[CLICK ME TO PLAY!](https://william-hu-codes.github.io/space-invaders/)
+
 #### Footnote
 This is my humble remake of the legendary arcade game, Space Invaders, that was developed by Tomohiro Nishikado. Although simplified, my game consists of the same fixed-shooter frameowrk that Space Invaders first introduced to this game genre.
 
