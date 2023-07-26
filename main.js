@@ -44,7 +44,7 @@ document.addEventListener("keydown", moveShooter)
 
 document.addEventListener("keydown", launchMissile)
 
-// run upon loading window
+/*----- run upon loading window -----*/
 renderScores()
 
 /*----- functions -----*/
