@@ -98,12 +98,14 @@ button:active {
 
 .btn-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 475px;
 }
 .restart {
     background-color: red;
     color: white;
+    justify-self: self-end;
+    margin-left: auto;
 }
 .easy {
     background-color: rgb(225, 225, 74);
