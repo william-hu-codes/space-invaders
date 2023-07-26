@@ -20,6 +20,7 @@ I hope this game successfully demonstrates all my newly acquired JS, CSS, and HT
 - Pixiliart - for css images
 - onlinegiftools - to remove the background of gifs
 - W3schools
+- ezGif - for editing gifs
 
 ## Getting Started
 Welcome to Space Invaders, the classic arcade game that puts you in charge of defending Earth from an alien invasion! Follow these simple instructions to become a master space defender:

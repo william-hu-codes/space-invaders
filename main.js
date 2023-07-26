@@ -38,9 +38,8 @@ buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
 })
 
-if (restartEl) {
-    restartEl.addEventListener("click", reset)
-  }
+restartEl.addEventListener("click", reset)
+
 document.addEventListener("keydown", moveShooter)
 
 document.addEventListener("keydown", launchMissile)
@@ -150,7 +149,8 @@ function renderWinner() {
 }
 
 function renderLoser() {
-    infoEl.textContent = "GAME OVER!"
+    infoEl.textContent = "The aliens have taken over!"
+    gridEl.style.backgroundImage = "url('assets/gameovergif.gif')"
     textEls.forEach(function(textEl) {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
     })

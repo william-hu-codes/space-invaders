@@ -10,26 +10,6 @@
     align-items: center;
     flex-direction: column;
 }
-.alien {
-    background-image: url("assets/alienGIF.gif");
-    background-size: 37px 37px;
-    background-repeat: no-repeat;
-    background-position: center;
-
-}
-.shooter {
-    background-image: url("assets/spaceship2.gif");
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
-    background-position: center;
-
-}
-.missile {
-    background-image: url("assets/missile3.gif");
-    background-size: 80px 80px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 /* layout */
 body {
     margin: 0;
@@ -97,25 +77,65 @@ p {
 }
 /* buttons */
 button {
-    padding: 8px;
     margin: 10px;
     border-radius: 15px;
     background-color:aliceblue;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px #999;
+    width: 80px;
+    font-size: 15px;
 }
 button:hover {
     background-color: lightpink;
     color: white;
 }
+button:active {
+    box-shadow: 0 3px #666;
+    transform: translateY(5px);
+    background-color: red;
+}
+
 .btn-container {
     display: flex;
-    justify-content: space-evenly;
-}
-button.difficulty:disabled {
-    background-color: gray;
+    justify-content: space-around;
+    width: 475px;
 }
 .restart {
     background-color: red;
     color: white;
 }
+.easy {
+    background-color: rgb(225, 225, 74);
+}
+.medium {
+    background-color: rgb(94, 94, 182);
+}
+.hard {
+    background-color: rgb(84, 161, 84);
+}
+button.difficulty:disabled {
+    background-color: gray;
+}
 /* images */
 
+.alien {
+    background-image: url("assets/alienGIF.gif");
+    background-size: 37px 37px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.shooter {
+    background-image: url("assets/spaceship2.gif");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.missile {
+    background-image: url("assets/missile3.gif");
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
