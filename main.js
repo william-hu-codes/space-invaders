@@ -21,7 +21,7 @@ let currentShooterPos;
 let currentAliens;
 let interval;
 let currentScore;
-let hiScore=0
+let hiScore = window.localStorage.getItem("hiScore")
 let aliensKilled;
 let alienInterval;
 /*----- cached elements  -----*/
@@ -62,8 +62,6 @@ function moveAliens() {
     //remove current aliens from screen
     removeAliens()
     //x position (column) of first and last alien
-
-
     const leftAlien = currentAliens[0]
     const rightAlien = currentAliens[currentAliens.length - 1]
     const leftAlienX = leftAlien % width
@@ -83,17 +81,6 @@ function moveAliens() {
             currentAliens[i] += direction
         }
     }
-
-    
-    // for (i = 0; i < currentAliens.length; i++) {
-    //     let direction = 1
-    //     if (edgeIndexes.includes(currentAliens[i])) {
-    //         currentAliens[i] += (width + direction)
-    //     }else {
-    //         currentAliens[i] += direction
-    //     }
-    // }   direction = direction *-1
-
     renderAliens()
     checkWinner()
     checkLoser()
@@ -163,7 +150,6 @@ function renderLoser() {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
     })
 }
-
 
 // EVENT LISTENER CALLBACK FUNCTIONS
 function reset() {
@@ -239,13 +225,23 @@ function renderScores() {
     renderHiScore()
 }
 function renderCurrentScore() {
+    if (currentScore === undefined || currentScore === null) {
+        currentScoreEl.textContent = `Current score: 0`
+    } else {
     currentScoreEl.textContent = `Current score: ${currentScore}`
+    }
 }
 
-
 function renderHiScore() {
+    if (hiScore === null) {
+        hiScore = 0
+    }
     if (currentScore > hiScore) {
         hiScore = currentScore
     }
     hiScoreEl.textContent = `Hi-score: ${hiScore}`
+    window.localStorage.setItem("hiScore", hiScore)
 }
+
+// run upon loading window
+renderScores()
