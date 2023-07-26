@@ -15,6 +15,8 @@ Images TDB
 - HTML
 
 ## Key Resources
+- Pixiliart - for css images
+- onlinegiftools - to remove the background of gifs
 
 ## Getting Started
 Welcome to Space Invaders, the classic arcade game that puts you in charge of defending Earth from an alien invasion! Follow these simple instructions to become a master space defender:

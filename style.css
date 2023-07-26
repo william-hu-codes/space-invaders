@@ -21,8 +21,8 @@
 }
 .shooter {
     /* background-color: red; */
-    background-image: url("assets/transparentRocket1.gif");
-    background-size: 37px 37px;
+    background-image: url("assets/spaceship2.gif");
+    background-size: 50px 50px;
     background-repeat: no-repeat;
     background-position: center;
 
