@@ -175,7 +175,7 @@ function reset() {
 }
 
 function handleClick(evt) {
-    infoEl.textContent = "Good luck!"
+    infoEl.textContent = "Good luck, space defender!"
     interval = convertProp[evt.target.innerText.toLowerCase()]
     difficulty=evt.target.innerText.toLowerCase()
     init()
