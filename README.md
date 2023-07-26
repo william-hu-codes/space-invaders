@@ -7,8 +7,8 @@ This is my humble remake of the legendary arcade game, Space Invaders, that was 
 I hope this game successfully demonstrates all my newly acquired JS, CSS, and HTML skills!
 
 ## Gameplay - Screenshots
-<img src="assets/gameplay1.png">
 <img src="assets/gameplay2.png">
+<img src="assets/gameplay1.png">
 <img src="assets/gameplay3.png">
 
 ## Technologies Used
@@ -47,7 +47,6 @@ Now, suit up, grab those arrow keys, and show those pesky invaders who's boss in
 ## Icebox Features
 - Additional lives
 - Aliens that shoot back
-- Score counter with hi-score
 - Different types of aliens worth diffent amounts of points
 - Aliens that speed up as they get closer to the bottom row
 - Possibility of getting power ups upon killing aliens
