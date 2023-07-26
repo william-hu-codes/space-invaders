@@ -1,4 +1,4 @@
-# space-invaders
+# Space Invaders
 Get ready to step into a time warp of nostalgic gaming glory! It's an epic throwback to the arcade heyday, where pixelated aliens are invading once more, just like they did back in the '80s. Dust off your vintage joystick, fire up your CRT screen, and embark on a journey through the galaxies of your childhood dreams. Those classic, relentless invaders are back, and they're pixelated proof that some things never go out of style. Navigate through their iconic formations, like dancing to the beat of an old-school synthesizer, and zap them into retro oblivion. It's like Pac-Man's ghostly cousins decided to invade the cosmos, and it's up to you to become the ultimate time-traveling space hero. Can you relive the golden age of gaming, beat the high score, and show these invaders that nostalgia packs a punch? Grab your leg warmers, dust off that Rubik's Cube, and get ready for a blast from the past in Space Invaders: Blast from the Past – where the '80s gaming vibes are strong, and the memories are even stronger!
 
 #### Footnote
@@ -12,14 +12,14 @@ I hope this game successfully demonstrates all my newly acquired JS, CSS, and HT
 <img src="assets/gameplay3.png">
 
 ## Technologies Used
-- JS
+- JavaScript
 - CSS
 - HTML
 
 ## Key Resources
-- Pixiliart - for css images
-- onlinegiftools - to remove the background of gifs
 - W3schools
+- Pixilart - for css images
+- onlinegiftools - to remove the background of gifs
 - ezGif - for editing gifs
 
 ## Getting Started
@@ -41,8 +41,9 @@ Welcome to Space Invaders, the classic arcade game that puts you in charge of de
 5.	Game Over and High Score:
     - The game ends when the aliens successfully reach the bottom of the screen or your spaceship comes into contact with an alien.
     - If your score is high enough, you may have you score immortalized in the Hi-score!
-6.	Remember: It may seem overwhelming at first, but with practice, you'll improve your skills and become a true Space Invaders champion!
-Now, suit up, grab those arrow keys, and show those pesky invaders who's boss in Space Invaders – the timeless arcade classic! Good luck, space defender
+6.	Remember: 
+    - It may seem overwhelming at first, but with practice, you'll improve your skills and become a true Space Invaders champion!
+    - Now, suit up, grab those arrow keys, and show those pesky invaders who's boss in Space Invaders – the timeless arcade classic! Good luck, space defender
 
 
 ## Icebox Features
