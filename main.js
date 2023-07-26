@@ -1,8 +1,10 @@
 /*----- constants -----*/
 const startingGrid = [...new Array(225)]
-const startingAliens = [0,1,2,3,4,5,36,37,38,39,
-20,21,22,23,24,30,31,32,33,34,
-15,16,17,18,19,35,6,7,8,9]
+const startingAliens = 
+    [0,1,2,3,4,5,6,7,8,9,
+    15,16,17,18,19,20,21,22,23,24,
+    30,31,32,33,34,35,36,37,38,39]
+
 //swapped 39 and 9 in above array because the the alien in index 9 must be the last element in array for isEdge check to work properly
 const width = 15
 const convertProp = {
@@ -22,7 +24,7 @@ let currentAliens;
 let interval;
 let currentScore;
 let hiScore=0
-// let missileInterval;
+let aliensKilled;
 let alienInterval;
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
@@ -48,6 +50,7 @@ document.addEventListener("keydown", launchMissile)
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
+    aliensKilled = []
     currentScore = 0
     currentShooterPos = 202
     direction = 1
@@ -61,6 +64,8 @@ function moveAliens() {
     //remove current aliens from screen
     removeAliens()
     //x position (column) of first and last alien
+
+
     const leftAlien = currentAliens[0]
     const rightAlien = currentAliens[currentAliens.length - 1]
     const leftAlienX = leftAlien % width
@@ -80,6 +85,17 @@ function moveAliens() {
             currentAliens[i] += direction
         }
     }
+
+    
+    // for (i = 0; i < currentAliens.length; i++) {
+    //     let direction = 1
+    //     if (edgeIndexes.includes(currentAliens[i])) {
+    //         currentAliens[i] += (width + direction)
+    //     }else {
+    //         currentAliens[i] += direction
+    //     }
+    // }   direction = direction *-1
+
     renderAliens()
     checkWinner()
     checkLoser()
@@ -87,7 +103,9 @@ function moveAliens() {
 
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++) {
-        cellElsArr[currentAliens[i]].classList.add("alien")
+        if (!aliensKilled.includes(i)) {
+            cellElsArr[currentAliens[i]].classList.add("alien")
+        }
     }
 }
 
@@ -134,10 +152,10 @@ function checkWinner() {
 
 function renderWinner() {
     infoEl.textContent = "Great work! You prevented an alien invasaion!"
-    gridEl.style.backgroundColor = "blue"
     textEls.forEach(function(textEl) {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green"
     })
+    gridEl.style.backgroundImage = "url('assets/spaceBackground.gif')"
 }
 
 function renderLoser() {
@@ -152,6 +170,7 @@ function renderLoser() {
 function reset() {
     clearInterval(alienInterval)
     clearGameboard()
+    gridEl.style.backgroundImage = ""
     gridEl.style.backgroundColor = "black"
     document.addEventListener("keydown", moveShooter)
     document.addEventListener("keydown", launchMissile)
@@ -203,7 +222,9 @@ function launchMissile(evt) {
             cellElsArr[currentMissilePos].classList.remove("missile")
             cellElsArr[currentMissilePos].classList.remove("alien")
             let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
-            currentAliens.splice(shotAlienIndex, 1)
+            aliensKilled.push(shotAlienIndex)
+            console.log(aliensKilled)
+            // currentAliens.splice(shotAlienIndex, 1)
             currentScore += points[difficulty]
             renderScores()
         }

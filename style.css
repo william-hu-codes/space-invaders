@@ -53,6 +53,7 @@ body {
     display: grid;
     grid-template-columns: repeat(15, 37px);
     grid-template-rows: repeat(15, 37px);
+    background-size: 555px 555px;
 }
 .scores-container {
     width: 555px;
