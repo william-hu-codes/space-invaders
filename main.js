@@ -38,13 +38,18 @@ buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
 })
 
-restartEl.addEventListener("click", reset)
-
+if (restartEl) {
+    restartEl.addEventListener("click", reset)
+  }
 document.addEventListener("keydown", moveShooter)
 
 document.addEventListener("keydown", launchMissile)
 
+// run upon loading window
+renderScores()
+
 /*----- functions -----*/
+
 function init() {
     createGameboard()
     currentAliens = [...startingAliens]
@@ -225,11 +230,10 @@ function renderScores() {
     renderHiScore()
 }
 function renderCurrentScore() {
-    if (currentScore === undefined || currentScore === null) {
-        currentScoreEl.textContent = `Current score: 0`
-    } else {
-    currentScoreEl.textContent = `Current score: ${currentScore}`
+    if ((currentScore === undefined) || (currentScore === null)) {
+        currentScore = 0
     }
+    currentScoreEl.textContent = `Current score: ${currentScore}`
 }
 
 function renderHiScore() {
@@ -242,6 +246,3 @@ function renderHiScore() {
     hiScoreEl.textContent = `Hi-score: ${hiScore}`
     window.localStorage.setItem("hiScore", hiScore)
 }
-
-// run upon loading window
-renderScores()
