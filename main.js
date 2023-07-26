@@ -141,7 +141,7 @@ function checkLoser() {
     }    
 }   
 function checkWinner() {
-    if (currentAliens.length === 0) {
+    if (aliensKilled.length === 30) {
         console.log("Winner!")
         clearInterval(alienInterval)
         document.removeEventListener("keydown", moveShooter)
