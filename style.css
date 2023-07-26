@@ -54,6 +54,7 @@ body {
     grid-template-columns: repeat(15, 37px);
     grid-template-rows: repeat(15, 37px);
     background-size: 555px 555px;
+    background-image: url("assets/starsbackgroundgif.gif");
 }
 .scores-container {
     width: 555px;
