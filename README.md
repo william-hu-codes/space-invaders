@@ -9,8 +9,8 @@ This is my humble remake of the legendary arcade game, Space Invaders, that was 
 I hope this game successfully demonstrates all my newly acquired JS, CSS, and HTML skills!
 
 ## Gameplay - Screenshots
-<img src="assets/gameplay2.png">
 <img src="assets/gameplay1.png">
+<img src="assets/gameplay2.png">
 <img src="assets/gameplay3.png">
 
 ## Technologies Used
@@ -19,10 +19,11 @@ I hope this game successfully demonstrates all my newly acquired JS, CSS, and HT
 - HTML
 
 ## Key Resources
-- W3schools
-- Pixilart - for css images
-- onlinegiftools - to remove the background of gifs
-- ezGif - for editing gifs
+- [W3schools]("https://www.w3schools.com/")
+- [Pixilart.com - for css images]("https://www.pixilart.com/")
+- [onlinegiftools.com - to remove the background of gifs]("https://onlinegiftools.com/create-transparent-gif)
+- [ezgif.com - for gif editing]("https://ezgif.com/add-text")
+- [freesound.org - for open source sound effects and music]("https://freesound.org/")
 
 ## Getting Started
 Welcome to Space Invaders, the classic arcade game that puts you in charge of defending Earth from an alien invasion! Follow these simple instructions to become a master space defender:
