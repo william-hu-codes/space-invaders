@@ -137,6 +137,10 @@ p {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
     margin: 6px;
 }
+.music-container {
+    margin-top: 10px;
+}
+
 /* buttons */
 button {
     margin: 10px;
