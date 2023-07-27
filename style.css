@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: rgba(0,0,0,0.8);
 }
 /* layout */
 body {
@@ -20,6 +21,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
+    background-image: url("assets/trongrid.jpeg");
+    background-size: cover;;
 }
 .grid {
     width: 555px;
@@ -45,6 +48,10 @@ h1 {
     margin-bottom: 8px;
     margin-top: 15px;
     animation: flicker 3s infinite;
+}
+.game-elements {
+    display: flex;
+    justify-content: center;;
 }
 
 @keyframes flicker{
