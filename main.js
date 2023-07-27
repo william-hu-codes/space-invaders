@@ -83,6 +83,13 @@ function init() {
     renderShooter()
     alienInterval = setInterval(moveAliens, interval)
 }
+function renderAliens() {
+    for (let i = 0; i < currentAliens.length; i++) {
+        if (!aliensKilled.includes(i)) {
+            cellElsArr[currentAliens[i]].classList.add("alien")
+        }
+    }
+}
 function moveAliens() {
     removeAliens()
     const leftAlien = currentAliens[0]
@@ -103,13 +110,6 @@ function moveAliens() {
     renderAliens()
     checkWinner()
     checkLoser()
-}
-function renderAliens() {
-    for (let i = 0; i < currentAliens.length; i++) {
-        if (!aliensKilled.includes(i)) {
-            cellElsArr[currentAliens[i]].classList.add("alien")
-        }
-    }
 }
 function removeAliens() {
     for (let i = 0; i < currentAliens.length; i++)
