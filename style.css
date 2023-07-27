@@ -75,7 +75,7 @@ h1 {
 @keyframes glitch3 {
     0% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     7% {
       transform: translate(2px, 3px);
@@ -83,11 +83,11 @@ h1 {
     }
     10% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     27% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     30% {
       transform: translate(5px, 2px);
@@ -99,7 +99,7 @@ h1 {
     }
     52% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     55% {
       transform: translate(5px, 1px);
@@ -111,7 +111,7 @@ h1 {
     }
     72% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     75% {
       transform: translate(2px, 6px);
@@ -119,11 +119,11 @@ h1 {
     }
     80% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     100% {
       transform: none;
-      opacity: 0.6;
+      opacity: 0.7;
     }
   }
 
