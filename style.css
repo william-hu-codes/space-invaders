@@ -1,7 +1,7 @@
 /* global styles  */
 * {
     box-sizing: border-box;
-    border: 0.5px solid red;
+    /* border: 0.5px solid red; */
 }
 /* element styles */
 .info {
@@ -75,55 +75,55 @@ h1 {
 @keyframes glitch3 {
     0% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     7% {
       transform: translate(2px, 3px);
-      opacity: 0.5;
+      opacity: 0.8;
     }
     10% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     27% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     30% {
       transform: translate(5px, 2px);
-      opacity: 0.5;
+      opacity: 0.8;
     }
     35% {
       transform: none;
-      opacity: 0.25;
+      opacity: 1;
     }
     52% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     55% {
       transform: translate(5px, 1px);
-      opacity: 0.5;
+      opacity: 0.8;
     }
     50% {
       transform: none;
-      opacity: 0.25;
+      opacity: 1;
     }
     72% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     75% {
       transform: translate(2px, 6px);
-      opacity: 0.5;
+      opacity: 0.8;
     }
     80% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
     100% {
       transform: none;
-      opacity: 0.25;
+      opacity: 0.6;
     }
   }
 
