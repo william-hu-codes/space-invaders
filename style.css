@@ -75,15 +75,15 @@ h1 {
 @keyframes glitch3 {
     0% {
       transform: none;
-      opacity: 0.7;
+      opacity: 1;
     }
     7% {
       transform: translate(2px, 3px);
-      opacity: 0.8;
+      opacity: 0.7;
     }
     10% {
       transform: none;
-      opacity: 0.7;
+      opacity: 0.8;
     }
     27% {
       transform: none;

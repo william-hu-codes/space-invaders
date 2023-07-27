@@ -216,7 +216,6 @@ function launchMissile(evt) {
             let shotAlienIndex = currentAliens.indexOf(currentMissilePos)
             aliensKilled.push(shotAlienIndex)
             console.log(aliensKilled)
-            // currentAliens.splice(shotAlienIndex, 1)
             currentScore += points[difficulty]
             renderScores()
         }
