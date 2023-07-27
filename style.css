@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    background-image: url("assets/trongrid.jpeg");
+    background-image: url("assets/gridbackground.jpeg");
     background-size: cover;;
 }
 h1 {

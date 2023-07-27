@@ -84,25 +84,19 @@ function init() {
     alienInterval = setInterval(moveAliens, interval)
 }
 function moveAliens() {
-    //remove current aliens from screen
     removeAliens()
-    //x position (column) of first and last alien
     const leftAlien = currentAliens[0]
     const rightAlien = currentAliens[currentAliens.length - 1]
     const leftAlienX = leftAlien % width
     const rightAlienX = rightAlien % width
-    //checking if we will hit an edge
     const isEdge = leftAlienX + direction < 0 ||rightAlienX + direction > width - 1
-    // console.log(leftAlienX, rightAlienX, isEdge)
     if (isEdge) {
         direction = direction * (-1)
     }
     for(let i = 0; i < currentAliens.length; i++) {
         if (isEdge) {
-            //if at an edge, then move aliens down one row (width)
             currentAliens[i] += width
         } else {
-            //otherwise, move the aliens left/right (direction)
             currentAliens[i] += direction
         }
     }
