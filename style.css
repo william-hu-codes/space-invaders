@@ -1,9 +1,12 @@
 /* global styles  */
+
 * {
     box-sizing: border-box;
     /* border: 0.5px solid red; */
 }
+
 /* element styles */
+
 .info {
     display: flex;
     justify-content: center;
@@ -11,7 +14,9 @@
     flex-direction: column;
     background-color: rgba(0,0,0,0.8);
 }
+
 /* layout */
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -141,6 +146,7 @@ p {
 }
 
 /* buttons */
+
 button {
     margin: 10px;
     border-radius: 15px;
@@ -188,6 +194,7 @@ button.difficulty:disabled {
     width: 200px;
     background-color: rgb(229, 161, 229);
 }
+
 /* images */
 
 .alien {

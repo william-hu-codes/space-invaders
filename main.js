@@ -104,7 +104,6 @@ function moveAliens() {
     checkWinner()
     checkLoser()
 }
-
 function renderAliens() {
     for (let i = 0; i < currentAliens.length; i++) {
         if (!aliensKilled.includes(i)) {
@@ -112,16 +111,13 @@ function renderAliens() {
         }
     }
 }
-
 function removeAliens() {
     for (let i = 0; i < currentAliens.length; i++)
     cellElsArr[currentAliens[i]].classList.remove("alien")
 }
-
 function renderShooter() {
     cellElsArr[currentShooterPos].classList.add("shooter")
 }
-
 function createGameboard() {
     startingGrid.forEach(function(cell, index) {
         let cellEl = document.createElement("div")
@@ -129,7 +125,6 @@ function createGameboard() {
         gridEl.appendChild(cellEl)
     })
 }
-
 function clearGameboard() {
     while (gridEl.lastElementChild) {
         gridEl.removeChild(gridEl.lastElementChild)
@@ -154,7 +149,6 @@ function checkWinner() {
         renderWinner()
     }
 }
-
 function renderWinner() {
     infoEl.textContent = "Great work! You prevented an alien invasaion!"
     textEls.forEach(function(textEl) {
@@ -168,9 +162,7 @@ function renderWinner() {
         bgMusicButton.innerText = "Background music: OFF"
     }
     victorySFX.play()
-
 }
-
 function renderLoser() {
     infoEl.textContent = "The aliens have taken over!"
     gridEl.style.backgroundImage = "url('assets/gameovergif.gif')"
@@ -180,7 +172,6 @@ function renderLoser() {
     })
     gameOverSFX.play()
 }
-
 function renderScores() {
     renderCurrentScore()
     renderHiScore()
@@ -191,7 +182,6 @@ function renderCurrentScore() {
     }
     currentScoreEl.textContent = `Current score: ${currentScore}`
 }
-
 function renderHiScore() {
     if (hiScore === null) {
         hiScore = 0
@@ -222,7 +212,6 @@ function reset(evt) {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple"
     })
 }
-
 function handleClick(evt) {
     infoEl.textContent = "Good luck, space defender!"
     interval = convertProp[evt.target.innerText.toLowerCase()]
@@ -232,7 +221,6 @@ function handleClick(evt) {
         buttonEl.setAttribute("disabled", "true")
     })
 }
-
 function moveShooter(evt) {
     if (evt.key !== "ArrowLeft" && evt.key !== "ArrowRight") return;
     cellElsArr[currentShooterPos].classList.remove("shooter")
@@ -246,7 +234,6 @@ function moveShooter(evt) {
     }
     renderShooter()
 }
-
 function launchMissile(evt) {
     let missileInterval
     console.log(evt.key)
@@ -275,7 +262,6 @@ function launchMissile(evt) {
             break
     }
 }
-
 function handleBgChanged(evt) {
     if (playingBgMusic === false) {
         bgPlayer.play()
