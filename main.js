@@ -36,7 +36,17 @@ const currentScoreEl = document.querySelector(".current-score")
 const hiScoreEl = document.querySelector(".hi-score")
 const bgMusicButton = document.querySelector(".bg-music-button")
 const bgPlayer = document.querySelector("#bg-player")
-const pewSFX = new Audio()
+const pewSFX = new Audio("assets/pew.wav")
+const explosionSFX = new Audio("assets/explosion.wav")
+const gameOverSFX = new Audio("assets/game over.wav")
+const victorySFX = new Audio("assets/victory.wav")
+
+/*----- volume adjustments  -----*/
+bgPlayer.volume = "0.4"
+pewSFX.volume = "0.4"
+explosionSFX.volume = "0.3"
+gameOverSFX.volume = "0.5"
+victorySFX.volume = "0.5"
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
@@ -147,6 +157,14 @@ function renderWinner() {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px green, 0 0 20px green, 0 0 25px green, 0 0 30px green, 0 0 35px green"
     })
     gridEl.style.backgroundImage = "url('assets/spaceBackground.gif')"
+    if (playingBgMusic === true) {
+        bgPlayer.pause()
+        playingBgMusic = false
+        bgMusicButton.style.backgroundColor = "rgb(229, 161, 229)"
+        bgMusicButton.innerText = "Background music: OFF"
+    }
+    victorySFX.play()
+
 }
 
 function renderLoser() {
@@ -156,6 +174,7 @@ function renderLoser() {
     textEls.forEach(function(textEl) {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
     })
+    gameOverSFX.play()
 }
 
 // EVENT LISTENER CALLBACK FUNCTIONS
@@ -205,12 +224,14 @@ function launchMissile(evt) {
     let missileInterval
     console.log(evt.key)
     let currentMissilePos = currentShooterPos
+    pewSFX.play()
     function moveMissile() {
         cellElsArr[currentMissilePos].classList.remove("missile")
         if (currentMissilePos < width) return
         currentMissilePos -= width
         cellElsArr[currentMissilePos].classList.add("missile")
         if (cellElsArr[currentMissilePos].classList.contains("alien")) {
+            explosionSFX.play()
             clearInterval(missileInterval)
             cellElsArr[currentMissilePos].classList.remove("missile")
             cellElsArr[currentMissilePos].classList.remove("alien")
@@ -261,9 +282,4 @@ function handleBgChanged(evt) {
         evt.target.style.backgroundColor = "rgb(229, 161, 229)"
         evt.target.innerText = "Background music: OFF"
     }
-}
-
-function playSound(name) {
-    player.src = sounds[name]
-    player.play()
 }
