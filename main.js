@@ -151,6 +151,7 @@ function renderWinner() {
 function renderLoser() {
     infoEl.textContent = "The aliens have taken over!"
     gridEl.style.backgroundImage = "url('assets/gameovergif.gif')"
+    gridEl.style.animation = "glitch3 3s infinite"
     textEls.forEach(function(textEl) {
         textEl.style.textShadow = "0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red"
     })
@@ -161,6 +162,7 @@ function reset() {
     clearInterval(alienInterval)
     clearGameboard()
     gridEl.style.backgroundImage = ""
+    gridEl.style.animation = ""
     gridEl.style.backgroundColor = "black"
     document.addEventListener("keydown", moveShooter)
     document.addEventListener("keydown", launchMissile)
