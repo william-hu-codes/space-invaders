@@ -24,6 +24,25 @@ body {
     background-image: url("assets/trongrid.jpeg");
     background-size: cover;;
 }
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffd9e2;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
+    font-size: 50px;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    animation: flicker 3s infinite;
+}
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
+    margin: 6px;
+}
+p {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
+    margin: 6px;
+}
 .grid {
     width: 555px;
     height: 555px;
@@ -38,16 +57,6 @@ body {
     width: 555px;
     display: flex;
     justify-content: space-between;
-}
-
-h1 {
-    font-family: 'Orbitron', sans-serif;
-    color: #ffd9e2;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
-    font-size: 50px;
-    margin-bottom: 8px;
-    margin-top: 15px;
-    animation: flicker 3s infinite;
 }
 .game-elements {
     display: flex;
@@ -127,16 +136,6 @@ h1 {
     }
   }
 
-h2 {
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
-    margin: 6px;
-}
-p {
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px purple, 0 0 20px purple, 0 0 25px purple, 0 0 30px purple, 0 0 35px purple;
-    margin: 6px;
-}
 .music-container {
     margin-top: 10px;
 }

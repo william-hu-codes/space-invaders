@@ -1,4 +1,5 @@
 /*----- constants -----*/
+
 const startingGrid = [...new Array(225)]
 const startingAliens = 
     [0,1,2,3,4,5,6,7,8,9,
@@ -15,7 +16,9 @@ const points = {
     medium: 400,
     hard: 500
 }
+
 /*----- state variables -----*/
+
 let direction;
 let currentShooterPos;
 let currentAliens;
@@ -25,7 +28,9 @@ let hiScore = window.localStorage.getItem("hiScore")
 let aliensKilled;
 let alienInterval;
 let playingBgMusic = false
+
 /*----- cached elements  -----*/
+
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
 const buttonEls = document.querySelectorAll("button.difficulty")
@@ -42,12 +47,15 @@ const gameOverSFX = new Audio("assets/game over.wav")
 const victorySFX = new Audio("assets/victory.wav")
 
 /*----- volume adjustments  -----*/
-bgPlayer.volume = "0.4"
+
+bgPlayer.volume = "0.3"
 pewSFX.volume = "0.4"
-explosionSFX.volume = "0.3"
+explosionSFX.volume = "0.2"
 gameOverSFX.volume = "0.5"
 victorySFX.volume = "0.5"
+
 /*----- event listeners -----*/
+
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
 })
@@ -55,7 +63,9 @@ restartEl.addEventListener("click", reset)
 document.addEventListener("keydown", moveShooter)
 document.addEventListener("keydown", launchMissile)
 bgMusicButton.addEventListener("click", handleBgChanged)
+
 /*----- run upon loading window -----*/
+
 renderScores()
 
 /*----- functions -----*/
@@ -177,8 +187,31 @@ function renderLoser() {
     gameOverSFX.play()
 }
 
+function renderScores() {
+    renderCurrentScore()
+    renderHiScore()
+}
+function renderCurrentScore() {
+    if ((currentScore === undefined) || (currentScore === null)) {
+        currentScore = 0
+    }
+    currentScoreEl.textContent = `Current score: ${currentScore}`
+}
+
+function renderHiScore() {
+    if (hiScore === null) {
+        hiScore = 0
+    }
+    if (currentScore > hiScore) {
+        hiScore = currentScore
+    }
+    hiScoreEl.textContent = `Hi-score: ${hiScore}`
+    window.localStorage.setItem("hiScore", hiScore)
+}
+
 // EVENT LISTENER CALLBACK FUNCTIONS
-function reset() {
+
+function reset(evt) {
     clearInterval(alienInterval)
     clearGameboard()
     gridEl.style.backgroundImage = ""
@@ -247,27 +280,6 @@ function launchMissile(evt) {
             missileInterval = setInterval(moveMissile, 100)
             break
     }
-}
-function renderScores() {
-    renderCurrentScore()
-    renderHiScore()
-}
-function renderCurrentScore() {
-    if ((currentScore === undefined) || (currentScore === null)) {
-        currentScore = 0
-    }
-    currentScoreEl.textContent = `Current score: ${currentScore}`
-}
-
-function renderHiScore() {
-    if (hiScore === null) {
-        hiScore = 0
-    }
-    if (currentScore > hiScore) {
-        hiScore = currentScore
-    }
-    hiScoreEl.textContent = `Hi-score: ${hiScore}`
-    window.localStorage.setItem("hiScore", hiScore)
 }
 
 function handleBgChanged(evt) {
