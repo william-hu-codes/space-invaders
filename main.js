@@ -31,6 +31,7 @@ let currentScore;
 let hiScore = window.localStorage.getItem("hiScore")
 let aliensKilled;
 let alienInterval;
+let playingBgMusic = false
 /*----- cached elements  -----*/
 const gridEl = document.querySelector(".grid")
 let cellElsArr = Array.from(document.querySelectorAll(".grid > div"))
@@ -40,17 +41,17 @@ const infoEl = document.querySelector(".infoMessage")
 const textEls = document.querySelectorAll(".text")
 const currentScoreEl = document.querySelector(".current-score")
 const hiScoreEl = document.querySelector(".hi-score")
+const bgMusicButton = document.querySelector(".bg-music-button")
+const player = new Audio()
+const bgPlayer = document.querySelector("#bg-player")
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
 })
-
 restartEl.addEventListener("click", reset)
-
 document.addEventListener("keydown", moveShooter)
-
 document.addEventListener("keydown", launchMissile)
-
+bgMusicButton.addEventListener("click", handleBgChanged)
 /*----- run upon loading window -----*/
 renderScores()
 
@@ -253,4 +254,21 @@ function renderHiScore() {
     }
     hiScoreEl.textContent = `Hi-score: ${hiScore}`
     window.localStorage.setItem("hiScore", hiScore)
+}
+
+function handleBgChanged(evt) {
+    if (playingBgMusic === false) {
+        bgPlayer.play()
+        playingBgMusic = true
+        evt.target.innerText = "Background music: ON"
+    } else {
+        bgPlayer.pause()
+        playingBgMusic = false
+        evt.target.innerText = "Background music: OFF"
+    }
+}
+
+function playSound(name) {
+    player.src = sounds[name]
+    player.play()
 }

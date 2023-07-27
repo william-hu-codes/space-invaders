@@ -185,6 +185,9 @@ button:active {
 button.difficulty:disabled {
     background-color: gray;
 }
+.bg-music-button {
+    width: 200px;
+}
 /* images */
 
 .alien {
