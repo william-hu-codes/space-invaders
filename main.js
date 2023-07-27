@@ -10,13 +10,6 @@ const convertProp = {
     medium: 200,
     hard: 100
 }
-const sounds = {
-    backgroundMusic: "https://cdn.freesound.org/previews/265/265308_4085012-lq.mp3",
-    shooter: "https://cdn.freesound.org/previews/459/459145_6142149-lq.mp3",
-    explosion: "https://freesound.org/people/Prof.Mudkip/sounds/386862/",
-    gameOver: "https://freesound.org/people/Euphrosyyn/sounds/442127/",
-    victory: "https://cdn.freesound.org/previews/518/518308_2402876-lq.mp3"
-}
 const points = {
     easy: 300,
     medium: 400,
@@ -42,8 +35,8 @@ const textEls = document.querySelectorAll(".text")
 const currentScoreEl = document.querySelector(".current-score")
 const hiScoreEl = document.querySelector(".hi-score")
 const bgMusicButton = document.querySelector(".bg-music-button")
-const player = new Audio()
 const bgPlayer = document.querySelector("#bg-player")
+const pewSFX = new Audio()
 /*----- event listeners -----*/
 buttonEls.forEach(function(buttonEl) {
     buttonEl.addEventListener("click", handleClick)
@@ -260,10 +253,12 @@ function handleBgChanged(evt) {
     if (playingBgMusic === false) {
         bgPlayer.play()
         playingBgMusic = true
+        evt.target.style.backgroundColor = "rgb(216, 80, 216)"
         evt.target.innerText = "Background music: ON"
     } else {
         bgPlayer.pause()
         playingBgMusic = false
+        evt.target.style.backgroundColor = "rgb(229, 161, 229)"
         evt.target.innerText = "Background music: OFF"
     }
 }
