@@ -35,7 +35,6 @@ Welcome to Space Invaders, the classic arcade game that puts you in charge of de
 3.	Gameplay:
     - Use the Left and Right Arrow Keys to move your spaceship horizontally along the bottom of the screen. 
     - Watch out for the alien invaders! They'll move side to side, gradually descending towards you. 
-    - The aliens are organized into rows, and each row has its unique pattern of movement. 
 4.	Scoring:
     - Each alien you shoot down earns you points. 
     - The harder the difficulty selected, the more points each alien is worth.
@@ -43,11 +42,11 @@ Welcome to Space Invaders, the classic arcade game that puts you in charge of de
     - You get bonus points for defeating all the aliens before they land on earth.
 5.	Game Over and High Score:
     - The game ends when the aliens successfully reach the bottom of the screen or your spaceship comes into contact with an alien.
+    - You win the game by successfully killing all the aliens before they land on earth
     - If your score is high enough, you may have you score immortalized in the Hi-score!
 6.	Remember: 
     - It may seem overwhelming at first, but with practice, you'll improve your skills and become a true Space Invaders champion!
     - Now, suit up, grab those arrow keys, and show those pesky invaders who's boss in Space Invaders – the timeless arcade classic! Good luck, space defender
-
 
 ## Icebox Features
 - Additional lives

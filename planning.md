@@ -14,7 +14,6 @@
  - current alien index
  - missile index
  - interval for difficulty of game
-
 ### Cache elements
  - starting gameboard
  - all grid cells
@@ -53,7 +52,6 @@
         - if cell class = missile and alien, remove alien
     - reset() resets the current gameboard by removing all the divs created by init()
     - moveMissile()
-
 
 ### Planning considerations
 #### What is the gameplay loop?
