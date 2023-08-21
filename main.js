@@ -45,6 +45,7 @@ const pewSFX = new Audio("assets/pew.wav")
 const explosionSFX = new Audio("assets/explosion.wav")
 const gameOverSFX = new Audio("assets/game over.wav")
 const victorySFX = new Audio("assets/victory.wav")
+const buttonSFX = new Audio("assets/arcade-button.mp3")
 
 /*----- volume adjustments  -----*/
 
@@ -196,6 +197,7 @@ function renderHiScore() {
 // EVENT LISTENER CALLBACK FUNCTIONS
 
 function reset(evt) {
+    buttonSFX.play()
     clearInterval(alienInterval)
     clearGameboard()
     gridEl.style.backgroundImage = ""
@@ -213,6 +215,7 @@ function reset(evt) {
     })
 }
 function handleClick(evt) {
+    buttonSFX.play()
     infoEl.textContent = "Good luck, space defender!"
     interval = convertProp[evt.target.innerText.toLowerCase()]
     difficulty=evt.target.innerText.toLowerCase()
@@ -264,11 +267,13 @@ function launchMissile(evt) {
 }
 function handleBgChanged(evt) {
     if (playingBgMusic === false) {
+        buttonSFX.play()
         bgPlayer.play()
         playingBgMusic = true
         evt.target.style.backgroundColor = "rgb(216, 80, 216)"
         evt.target.innerText = "Background music: ON"
     } else {
+        buttonSFX.play()
         bgPlayer.pause()
         playingBgMusic = false
         evt.target.style.backgroundColor = "rgb(229, 161, 229)"
